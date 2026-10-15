@@ -2,6 +2,8 @@
 Thank you for your contribution! Please provide a clear description of your change below.
 See CONTRIBUTING.md for guidance on contributing skills, custom agents, MCP servers, and tests.
 Fill in every section that applies, and delete the entry-type sections that don't.
+For a required item that genuinely does not apply, leave the box unchecked and append
+`n/a: <reason>` rather than deleting the line or ticking it.
 -->
 
 > **Before you open this PR — read this.** Every required box below must be checked, with the work actually done, before a maintainer will review. A PR with unchecked required items is placed **on hold** and is not reviewed until it is complete. Checking a box you haven't actually done will be caught at review and sends the PR back. Eval evidence is gated separately by the `validate-skill-evals` check. The per-entry-type sections apply by contribution type — complete every section that matches what this PR adds or changes.
@@ -20,7 +22,19 @@ Fill in every section that applies, and delete the entry-type sections that don'
 
 ## Required before review
 
-<!-- These are gates. A PR is not ready for review until each applicable box is checked. -->
+<!-- These are gates. A PR is not ready for review until each applicable box is checked.
+
+     If an item genuinely does not apply, leave the box unchecked and append `n/a: <reason>` to
+     the line. The automated check treats that as met and shows the reason to reviewers. Do not
+     delete the line — a deleted item is invisible — and do not tick something you have not done.
+
+     Three items can never be marked n/a: the domain SME sign-off, the internal-content item,
+     and the licence confirmation.
+
+     Items that only concern a contributed tool are not enforced on a PR that changes nothing
+     under `skills/`, `mcp/` or `custom-agents/`. On a documentation or infrastructure PR only
+     the internal-content item and the licence confirmation apply. -->
+
 
 - [ ] **Repository layout is correct** — skills in `/skills`, MCP servers in `/mcp`, custom agents in `/custom-agents`; skills and MCP servers are never mixed in one directory.
 - [ ] **A domain SME has reviewed and signed off.** A named subject-matter expert for this domain — someone other than the author — has reviewed the tool for technical correctness and approved it in this PR. Required, not optional.
