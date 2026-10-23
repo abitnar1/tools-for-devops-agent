@@ -50,7 +50,7 @@ Look specifically for `CopyObject` and `CopyPart` in the grouped results. This i
 
 ### Why this matters (the mechanism)
 
-A Cross-Region S3 Interface Endpoint uses the cross-region PrivateLink feature (not a standard same-region Interface Endpoint — standard Interface Endpoints cannot span regions). Enabling private DNS on it means *every* S3 API call from *any* subnet in the VPC resolves through the endpoint, including calls whose source bucket is in a different region than the endpoint targets. `CopyObject` and `UploadPartCopy` calls that need to reach a different region's S3 control plane will fail once intercepted by an endpoint scoped to the wrong region. There is no DNS-level split available — this has been confirmed with the S3 service team.
+A Cross-Region S3 Interface Endpoint uses the cross-region PrivateLink feature (not a standard same-region Interface Endpoint — standard Interface Endpoints cannot span regions). Enabling private DNS on it means *every* S3 API call from *any* subnet in the VPC resolves through the endpoint, including calls whose source bucket is in a different region than the endpoint targets. `CopyObject` and `UploadPartCopy` calls that need to reach a different region's S3 control plane will fail once intercepted by an endpoint scoped to the wrong region. There is no DNS-level split available. S3 interface endpoints do not support `CopyObject` or `UploadPartCopy` between buckets in different AWS Regions — see [Restrictions and limitations of AWS PrivateLink for Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html).
 
 ### Cost note
 

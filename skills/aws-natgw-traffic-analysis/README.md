@@ -19,6 +19,7 @@ An AWS NAT Gateway traffic analysis skill. It traces NAT Gateway traffic to its 
   * **CloudWatch Logs** — read with CloudWatch Logs Insights. Works with read-only logging permissions.
   * **Amazon S3** — needs an existing Athena table over the flow-log bucket, plus permissions that are not in the default agent policy (`s3:GetObject`/`s3:ListBucket` on the bucket, `kms:Decrypt` for customer managed keys, or `athena:StartQueryExecution` with a workgroup that uses managed query results). Without them, the skill asks you for a per-destination summary.
   * **No flow logs** — the skill says so, recommends enabling them, and reports only what CloudWatch metrics and configuration checks can show.
+* `ce:GetCostAndUsage` on the account being analyzed — the CopyObject/UploadPartCopy check that runs before any Cross-Region S3 Interface Endpoint recommendation calls `aws ce get-cost-and-usage` (see `references/endpoint-coverage-and-cross-region.md`, Step 3).
 * To run the suggested validation commands, read-only access to the relevant networking and logging APIs (e.g., `ec2:Describe*`, managed prefix-list reads, CloudTrail lookups).
 
 ## Uploading to AWS DevOps Agent

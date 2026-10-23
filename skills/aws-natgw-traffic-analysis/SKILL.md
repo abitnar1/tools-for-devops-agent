@@ -5,8 +5,7 @@ metadata:
   version: "1.0.0"
   author: abitnar1
   summary: "Traces AWS NAT Gateway traffic from flow logs to find endpoint, peering, and cross-region paths that bypass NAT. Read-only, GB and percent only."
-  agent_types: "CHAT"
-  aws-devops-agent-skills.agent-types: "Chat tasks"
+  aws-devops-agent-skills.agent-types: "CHAT"
   aws-devops-agent-skills.aws-services: "Amazon VPC, Amazon S3, Amazon EC2, AWS CloudTrail, Amazon CloudWatch"
   aws-devops-agent-skills.technical-domains: "Networking, Cost Optimization"
 ---
@@ -111,7 +110,7 @@ Load each file only when its step comes up:
 - [Traffic categorization](references/traffic-categorization.md) — load at Step 3. The four-bucket categorization procedure, the `src|dst` pipe-delimited aggregation artifact, RFC1918 attribution rules, AWS-Service-tag verification against `ip-ranges.amazonaws.com`, and the "AWS (service unidentified)" label.
 - [Endpoint coverage and cross-region](references/endpoint-coverage-and-cross-region.md) — load at Steps 4, 5, and 8. Gateway Endpoint verification steps, prefix-list cross-region detection, and the full CopyObject/UploadPartCopy decision tree for cross-region S3 fixes.
 - [Interface Endpoints](references/interface-endpoints.md) — load at Step 6, when non-S3/DynamoDB AWS service traffic is significant or the workload is EKS/ECS in private subnets. CloudTrail-based service identification, Interface Endpoint coverage checks, the ECR image-pull pattern, and how to present the per-AZ hourly cost tradeoff without dollar figures.
-- [Customer IP tracing](references/customer-ip-tracing.md) — load at Step 7, when customer-owned or BYOIP addresses are significant or the user asks what is behind a destination IP. ASN/WHOIS ownership tracing, EIP-to-ENI-to-VPC tracing, peering and route-table verification, and the RDS-via-public-endpoint identification pattern (including its known limitation: the RDS instance name cannot be recovered from the ENI lookup alone).
+- [Customer IP tracing](references/customer-ip-tracing.md) — load at Step 7, when customer-owned or BYOIP addresses are significant or the user asks what is behind a destination IP. ASN ownership tracing (a lookup the customer runs), EIP-to-ENI-to-VPC tracing, peering and route-table verification, and the RDS-via-public-endpoint identification pattern (including its known limitation: the RDS instance name cannot be recovered from the ENI lookup alone).
 - [Output and limitations](references/output-and-limitations.md) — load at Step 9, before drafting findings. Output format rules (GB/% only, no dollar figures), the mandatory data-window disclaimer, and the standard limitations block.
 
 ## Output expectations

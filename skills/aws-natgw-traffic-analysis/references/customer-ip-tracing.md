@@ -4,11 +4,11 @@ Use this procedure when customer-owned public IPs (including BYOIP) are a signif
 
 ## Procedure
 
-1. **ASN lookup** — confirm the destination IP is actually hosted in AWS:
+1. **ASN lookup (customer runs this)** — the agent has no shell, so it cannot run DNS lookups itself. Run Step 2 first: an IP that `describe-addresses` finds belongs to this account and needs no ASN lookup. For a destination IP not found in the account, give the customer this command to run to confirm whether the IP is hosted in AWS:
    ```
    dig TXT <reversed-ip>.origin.asn.cymru.com
    ```
-   ASN **AS16509** or **AS14618** means the IP is AWS-hosted (this covers BYOIP ranges announced through AWS).
+   ASN **AS16509** or **AS14618** means the IP is AWS-hosted (this covers BYOIP ranges announced through AWS). Until the customer reports the result, state that the IP's ownership is unconfirmed.
 
 2. **EIP trace** — if the IP is a customer Elastic IP:
    ```
